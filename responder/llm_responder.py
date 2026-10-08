@@ -78,35 +78,27 @@ def validate_response(response):
     """
 
     try:
-        # Make sure the object can be converted to JSON.
         json_data = json.dumps(response)
-
-        # Parse it back to ensure valid JSON representation.
         parsed = json.loads(json_data)
 
-        # Response must be a dictionary.
         if not isinstance(parsed, dict):
             return False
 
-        # Required fields must exist.
         if "intent" not in parsed:
             return False
 
         if "response" not in parsed:
             return False
 
-        # Intent must be one of the supported intents.
         if parsed["intent"] not in SUPPORTED_INTENTS:
             return False
 
-        # Response must be a non-empty list.
         if not isinstance(parsed["response"], list):
             return False
 
         if len(parsed["response"]) == 0:
             return False
 
-        # Every response item must be a string.
         for item in parsed["response"]:
             if not isinstance(item, str):
                 return False
