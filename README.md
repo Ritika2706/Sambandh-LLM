@@ -286,7 +286,7 @@ The current test suite covers:
 Current result:
 
 ```text
-14 passed
+37 passed
 ```
 
 Run the tests with:
